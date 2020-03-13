@@ -147,7 +147,7 @@ This is to certify that the thesis entitled, ``\emph{\ttitle}'' and submitted by
 \underline{\authornames} ID No. \underline{\idnum} in partial fulfillment of the
 requirements of \ccode{} \cname{} embodies the work done by him under my
 supervision.\\[2.5cm]
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.65\textwidth}
     \begin{flushleft} \large
         \vspace{2cm}
         \rule[0.5em]{13em}{0.5pt}\\
@@ -158,7 +158,7 @@ supervision.\\[2.5cm]
         Date:\\
     \end{flushleft}
 \end{minipage}
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.65\textwidth}
     \begin{flushleft} \large
         \vspace{2cm}
         \rule[0.5em]{13em}{0.5pt}\\

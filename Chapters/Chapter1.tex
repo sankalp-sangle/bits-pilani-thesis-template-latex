@@ -1,20 +1,55 @@
 % Chapter 1
 
-\chapter{Chapter Title Here} % Main chapter title
+\chapter{Introduction} % Main chapter title
 
 \label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
 
-\lhead{Chapter 1. \emph{Chapter Title Here}} % This is for the header on each page - perhaps a shortened title
+\lhead{Chapter 1. \emph{Introduction}} % This is for the header on each page - perhaps a shortened title
 
 %----------------------------------------------------------------------------------------
 
-\section{Welcome and Thank You}
-Welcome to this \LaTeX{} Thesis Template, a beautiful and easy to use template for writing a thesis using the \LaTeX{} typesetting system.
+Historically, computer networks have always been relatively blackboxed entities that provide no substantial
+facilities for configuration. The devices that are present in them, from traditional switches and routers, to other
+middleware like firewalls and network address translators, often execute software that is proprietary, and hence
+rigid by nature.
+\newline
+These devices are configured by network aaadministrators using highly specialised interfaces that vary from vendor to 
+vendor. The software for communicating with these interfaces is not centralized, and network devices need to be
+individually configured to achieve the desired functionality. This frozen structure has hindered flexibility and
+increased costs of managing the network effectively.
+\newline
+It is interesting to note that this structute was not by accident. The nascent stage Internet needed to be absolutely
+reliable and fault tolerant if widespread adoption was to take place. One way to minimize failures in the network was
+to make the network devices rigid and inflexible. However, the widespread adoption of the
+Internet has made the question of programmable networks much more pragmatic to discuss.
 
-If you are writing a thesis (or will be in the future) and its subject is technical or mathematical (though it doesn't have to be), then creating it in \LaTeX{} is highly recommended as a way to make sure you can just get down to the essential writing without having to worry over formatting or wasting time arguing with your word processor.
+\section{Why do we need programmable networks?}
+The ability to remotely configure behavior of switches/routers is invaluable for a number of applications,
+some of them being:
+\begin{itemize}
+  \item Dynamic Routing of heavy hitters
+  \item Testing of new protocols/routing policies
+  \item In-Network Computing
+  \item Layer 4 Load Balancing
+  \item Network Monitoring and Debugging (The focus of this thesis)
+\end{itemize}
+A programmable network is much easier to monitor and control, and network devices whose forwarding policies can be
+customized can be made to behave like a router, a switch, a firewall, a NAT, or any other device we can conceptualize
+within the constraints of switch programmability. This saves a lot of money and physical labour that would've been
+spent in the purchase and set up of highly specific network devices. A programmable network is, by nature, facilitative
+to network innovation and reduces the barrier to introduction of new protocols/policies.
 
-\LaTeX{} is easily able to professionally typeset documents that run to hundreds or thousands of pages long. With simple mark-up commands, it automatically sets out the table of contents, margins, page headers and footers and keeps the formatting consistent and beautiful. One of its main strengths is the way it can easily typeset mathematics, even \emph{heavy} mathematics. Even if those equations are the most horribly twisted and most difficult mathematical problems that can only be solved on a super-computer, you can at least count on \LaTeX{} to make them look stunning.
+\section{The idea of separation of Control Plane and Data Plane}
 
+\section{A Brief History of Programmability in Computer Networks}
+
+\subsection{Early approaches towards programmability (1990s - late 2000s)}
+
+\subsection{OpenFlow (and its limitations)}
+
+\section{Towards Data Plane Programmability}
+\subsection{Forwarding Metamorphosis Paper}
+\subsection{The P4 Programming Language}
 %----------------------------------------------------------------------------------------
 
 \section{Learning \LaTeX{}}
