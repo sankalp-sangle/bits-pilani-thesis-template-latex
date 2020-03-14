@@ -10,4 +10,23 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-Hi
+Data Centers have emerged as the basic unit for providing web services to customers by major technology companies.
+They house servers in the thousands and tens of thousands, with servers often serving as backups to ensure reliability.
+Traffic in data centers is often organized in a tree like structure, with top of rack switches, aggregate switches and core
+switches. The tree like structure is easy to maintain and scale to meet the growing number of clients.
+\newline
+The reliability of data center network infrastructure is critically important for ensuring seamless user experience.
+Companies like Facebook and Google have spent considerable investments into developing frameworks for
+automating fault detection and repair of networks. Even so, the nature and distribution of faults in data center networks
+isn't completely understood, and many faults like microbursts due to fan-in traffic go undetected. A closer look is needed at the type of faults
+that occur in data center networks and on how they can be diagnosed.
+\newline
+Modern data centres operate at throughputs of close to a few hundreds of Gbps, implying packets coming in at a few hundreds of nanoseconds
+apart. Most monitoring solutions offer resolution of the order of milliseconds, and hence are inadequate
+for recording and detection of events that last for sub millisecond intervals. This motivates the need for
+having a diagnosis system to distinguish events at nanosecond level by leveraging advances in data plane programming.
+\newline
+This thesis aims to discuss techniques for diagnosing faults in data centers at nanosecond resolution. This resolution is provided by existing data plane 
+time synchronization protocols. Data plane switches are used to record network telemetry data in a relational database, which is then
+queried using SQL to diagnose possible faults in a network and create relevant visualizations which can help a network administrator
+determine the root cause of faults in the network and address them.
