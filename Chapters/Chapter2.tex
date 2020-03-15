@@ -22,6 +22,8 @@ to make the network devices rigid and inflexible. However, by the turn of the ce
 hosts and the widespread adoption of the Internet has given rise to a need for managing large flows of traffic effectively.
 The end host explosion has made the question of programmable networks much more pragmatic to discuss.
 
+
+
 \section{Why do we need programmable networks?}
 The ability to remotely configure behaviour of switches/routers finds use in a number of applications,
 some of them being:
@@ -45,15 +47,24 @@ earlier. One important concept of SDN is \textit{the decoupling of Control and D
 Control plane refers to protocols like OSPF, BGP, Multicast which govern traffic handling on a higher scale. The 
 data plane performs packet switching based on the policies that the control plane dictates. In a general sense, the control
 plane is the intelligence layer, and the data plane is the manifestation of it in a standalone switch.
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=1.0\columnwidth]{Figures/control_data_sep.png}
+		\rule{35em}{0.5pt}
+	\caption[Separation of Control and Data planes]{Separation of Control and Data planes}
+	\label{fig:control_data_sep}
+\end{figure}
 \newline
 A traditional switch has the forwarding logic baked into the circuit, and tight integration of data and control planes.
-The idea behind SDN is to decouple the planes, and have a programmable control plane that can communicate with the data plane
-via a standardized API (like OpenFlow) so as to offer freedom in specifying how a switch handles packets rather than 'hardcoding'
+The idea behind SDN is to decouple the planes (Figure \ref{fig:control_data_sep}), and have a programmable control plane that can communicate with the data plane
+via a standardized API (like OpenFlow\cite{openflow}) so as to offer freedom in specifying how a switch handles packets rather than 'hardcoding'
 it into the switch.
+
+
 
 \section{A Brief History of Programmability in Computer Networks}
 \subsection{Early approaches towards programmability (1990s - late 2000s)}
-The early days of SDN research revolved around what were known as Active Networks. In this, two approaches were used:
+The early days of SDN research revolved around what were known as Active Networks\cite{activenet}. In this, two approaches were used:
 \begin{itemize}
   \item \textit{Capsule model}, where code to be run at the nodes is carried within packets
   \item \textit{Programmable router/switch model} where the code is pushed to the nodes by out-of-band means 
@@ -64,11 +75,11 @@ the network. The programmable model was much more aligned to what SDN is today. 
 was due to a mixture of concerns over reliability and performance, and also because it was important to ensure proliferation
 of the Internet by keeping the network core as simple as possible.
 \subsection{OpenFlow (and its limitations)}
-OpenFlow started off as a research project that was implemented at Stanford University by researchers in a campus wide network. As 
+OpenFlow started off as a research project that was implemented at Stanford University\cite{openflow} by researchers in a campus wide network. As 
 mentioned before, it defines the API for communication between a decoupled data plane and control plane. OpenFlow quickly became
 popular due to it being easy to adopt (most commodity switches required a firmware upgrade). The OpenFlow specification provides 
 means to specify entries in match-action tables(called rules) where a match is made against the headers of the packet, and an
-action is taken(forwarding, dropping, broadcasting). Widespread adoption by companies like Google boosted its popularity
+action is taken(forwarding, dropping, broadcasting). Widespread adoption by companies like Google\cite{googleOpenflow} boosted its popularity
 and many new switch vendors entered the established markets by undertaking early adoption of OpenFlow.
 There is a false belief that OpenFlow is the same as SDN; SDN is a general term used for addressing techniques that make networks programmable.
 It provides no direction or proposal on \textit{how} to go about doing that.
@@ -84,7 +95,7 @@ Data plane programming offers the flexibility of describing how the packet heade
 fields (for example, those of a new protocol) and modified, as well as the order in which the headers are reassembled before being
 transmitted by the switch. It is natural to think that there will be a tradeoff between throughput/speed and customizability, and this 
 was the notion in the research community for a number of years. However, programmable switches have been made possible by recent 
-advances networking architectures in Figure \ref{fig:Match Action}. They expose such functionality in the data plane:
+advances networking architectures\cite{forwardingMeta} in Figure \ref{fig:Match Action}. They expose such functionality in the data plane:
 \begin{itemize}
   \item Flexible parsing and deparsing on packet headers
   \item Ingress/Egress processing using match-action tables
@@ -104,16 +115,16 @@ These switches offer throughputs of close to 1 Tbps (the rate demanded by modern
 \subsection{Constraints in data plane programmable switches}
 In order to maintain packet processing at line-rate with no slow down in throughput, certain constraints need to be followed which impose a limit on the packet processing flexibility. Some of these are:
 \begin{itemize}
-  \item No looping constructs in P4 (the language used to program switches)
+  \item No looping constructs in P4\cite{p4} (the language used to program switches)
   \item no floating point computations
   \item no exact multiply/divides (only approximated by bit-shifts)
   \item only one read-modify-write per stage to maintain processing at line rate
 \end{itemize}
 Even so, data plane programmability has found a number of applications in recent years including Network Monitoring and Debugging (the subject matter of this thesis), time synchronization, detection 
-of elephant or heavy hitter flows, and In-Network Computing.
+of elephant or heavy hitter flows\cite{HH}, and In-Network Computing.
 \subsection{The P4 Programming Language}
 
-P4 (\textit{Programming Protocol Independent Packet Processors}) is a programming language developed specifically for programming data plane switches. The language is maintained by the P4 Language Consortium and is widely used for data plane programmability today. It provides constructs for specifying deterministic parsers for header parsing, action constructs for specifying steps to be taken in case of a match, and also steps to be taken in packet reassembly.
+P4 (\textit{Programming Protocol Independent Packet Processors})\cite{p4} is a programming language developed specifically for programming data plane switches. The language is maintained by the P4 Language Consortium and is widely used for data plane programmability today. It provides constructs for specifying deterministic parsers for header parsing, action constructs for specifying steps to be taken in case of a match, and also steps to be taken in packet reassembly.
 %----------------------------------------------------------------------------------------
 
 % \section{Getting Started with this Template}

@@ -39,7 +39,7 @@ in preceding sections. It also proposes further work to be done till the end of 
 This type of problem occurs in data centers in applications like MapReduce and DFS exhibiting fan-in traffic patterns.
 This occurs when multiple hosts send data to a single host. In the case where the traffic from multiple hosts is
 synchronized(common in scatter-gather architectures, Figure \ref{fig:Synch Incast}), it may lead to heavy congestion for a short duration (of the
-order of microseconds) and lead to spikes in queuing delay even when none of the flows are individually anywhere near
+order of microseconds]\cite{microburst}) and lead to spikes in queuing delay even when none of the flows are individually anywhere near
 the capacity of the link.
 
 \begin{figure}[htbp]
@@ -149,7 +149,7 @@ and \ref{fig:distribution_sync}
 \section{Asynchronous Incast problem and Heavy Hitters}
 \subsection{Description}
 The Asynchronous Incast problem simply means a scenario where the queue depth increases over a period of microbursts
-in the lack of any visible synchronization pattern. Often in these cases, we have the presence of a heavy hitter flow
+in the lack of any visible synchronization pattern. Often in these cases, we have the presence of a heavy hitter flow\cite{HH}
 (A flow which consumes a substantial amount of bandwidth that violates fairness) which causes congestion and overflowing
 of buffers in switch.
 \subsection{Configuration}
