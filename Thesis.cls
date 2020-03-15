@@ -400,8 +400,8 @@ supervision.\\[2.5cm]
 \newenvironment{acknowledgements}
 {
     \btypeout{Acknowledgements}
-    \addtotoc{Acknowledgements}
-    \addtocontents{toc}{\vspace{1em}}
+    % \addtotoc{Acknowledgements}
+    % \addtocontents{toc}{\vspace{1em}}
     \setstretch{1.3}
     \thispagestyle{plain}
     \begin{center}{\huge{\textit{Acknowledgements}} \par}\end{center}
@@ -435,8 +435,8 @@ supervision.\\[2.5cm]
 \addcontentsline{toc}{chapter}{#1}}
 \renewcommand\tableofcontents{
 \btypeout{Table of Contents}
-\addtotoc{Contents}
-\begin{spacing}{1}{
+% \addtotoc{Contents}
+\begin{spacing}{2}{
     \setlength{\parskip}{1pt}
     \if@twocolumn
       \@restonecoltrue\onecolumn

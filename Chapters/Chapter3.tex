@@ -31,7 +31,7 @@ The rest of this chapter is structured as follows: For a potential fault that ca
 \end{itemize}
 
 The last section presents a unified scheme for diagnosing faults in networks that has been built on logic that was developed
-in preceding sections.
+in preceding sections. It also proposes further work to be done till the end of the semester.
 \section{The Synchronous Incast Problem}
 
 \subsection{Description}
@@ -273,12 +273,17 @@ and \ref{fig:distribution_under}
 	\caption[Packet Distribution at Trigger Switch, Link Underprovisioning]{Packet Distribution at Trigger Switch, Link Underprovisioning. Note the overlapping dots, showing link to be overutilized.}
 	\label{fig:distribution_under}
 \end{figure}
-\section{A unified scheme}
+\section{Conclusions and further scope}
 
-A unified scheme to classify scenarios based on the above discussion would be as follows:
+Based on the reasoning done in the preceding sections, a unified scheme to classify arbitrary scenarios based on the above discussion would be as follows:
 \begin{itemize}
-	\item Estimate the peak width.
-	\item If it is more than 1 millisecond, check if link is being overutilized. If so, it is probably a case of link Underprovisioning.
-	\item If it is less than 1 microsecond, calculate Jain's Fairness Index of distribution. If it is greater than 0.7, it is probably a synchronized incast. Else, if it is less than 0.45, it is probably
-			an asynchronous incast with heavy hitters present.
+	\item Estimate the peak width in the graph
+	\item If it is more than 1 millisecond, check if link is being overutilized. If so, it is probably a case of link underprovisioning.
+	\item If it is less than 1 microsecond, calculate Jain's Fairness Index of packet distribution. If it is greater than 0.7, it is probably a synchronized incast. 
+	\item Else, if it is less than 0.45, it is probably an asynchronous incast with heavy hitters present.
+	\item Else (it is between 0.45 and 0.7), plot appropriate graphs for queue depth and link utilization and let the network operator deduce the exact problem.
 \end{itemize}
+
+As I further pursue my thesis, my goal is to isolate many such problems (two problems I currently have in mind are link failure 
+and change of control plane policy), diagnose them on an individual basis, and at the end consolidate everything together into a single unified logic for diagnosing 
+varied faults in a network.
