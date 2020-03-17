@@ -84,8 +84,11 @@
                {   9pt}  % foot height
                { 0.3in}  % foot sep
 %-------------------------------------------------------------------------------
+% Custom packages for Sankalp Thesis
 \usepackage{algorithm}
 \usepackage{algorithmic}
+% ----------------------------------------
+
 %-------------------------------------------------------------------------------
 % DECLARATION OF AUTHORSHIP
 %
@@ -272,7 +275,7 @@ supervision.\\[2.5cm]
         stringstyle=\color[rgb]{0.7,0,0} }
 \usepackage[pdfpagemode={UseOutlines},bookmarks=true,bookmarksopen=true,
    bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-   colorlinks,linkcolor={blue},citecolor={red},urlcolor={black},
+   colorlinks,linkcolor={blue},citecolor={red},urlcolor={blue},
    pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
 
 \usepackage[toc]{glossaries}
