@@ -63,7 +63,22 @@
 \Certificate
 
 \begin{abstract}
-Pending : Write Abstract\ldots
+    Data Centers hav emerged as the basic unit for providing web services to customers by major technology companies.
+    They house servers in the thousands and tens of thousands, with servers often serving as backups to ensure reliability.
+    The reliability of data center network infrastructure is critically important for ensuring seamless user experience.
+    The nature and distribution of faults in data center networks isn't completely understood, and many faults like 
+    microbursts due to fan-in traffic go undetected. A closer look is needed at the type of faults that occur in data center networks
+     and on how they can be diagnosed.    
+    Modern data centres operate at throughputs of close to a few hundreds of Gbps, implying packets coming in at a few hundreds of nanoseconds
+    apart. Most monitoring solutions offer resolution of the order of milliseconds, and hence are inadequate
+    for recording and detection of events that last for sub millisecond intervals.
+    This thesis aims to discuss techniques for diagnosing faults in data centers, develop a monitoring system to view them, 
+    at nanosecond raesolution. It is also demonstrated that appropriate calculations can be performed on the SQL queries
+    to extract quantities like ingress throughputs, egress throughputs, relative ratios of packets in a network, (all at nanosecond
+    resolution) thereby demonstrating that collecting relational data about switches is a simple and yet powerful way to extract meaningful 
+    data and create relevant visualizations\cite{grafana} which can help a network administrator determine the root cause of faults in the network 
+    and address them.
+
 \end{abstract}
 
 \begin{acknowledgements}
@@ -173,7 +188,7 @@ Pending : Write Abstract\ldots
 \input{Chapters/Chapter1}
 \input{Chapters/Chapter2}
 \input{Chapters/Chapter3}
-%\input{Chapters/Chapter4}
+\input{Chapters/Chapter4}
 %\input{Chapters/Chapter5}
 %\input{Chapters/Chapter6}
 %\input{Chapters/Chapter7}
@@ -213,5 +228,5 @@ Pending : Write Abstract\ldots
 \newpage
 \lhead{\emph{Turnitin Originality Report}}
 \Huge{\textbf{Turnitin Originality Report}}
-Pending
+Pending....
 \end{document}
