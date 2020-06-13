@@ -106,11 +106,6 @@ I, \authornames, declare that this \doctype{} titled, `\ttitle' and the work
 presented in it are my own. I confirm that:
 
 \begin{itemize}
-    \item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in
-        candidature for a research degree at this University.
-    \item[\tiny{$\blacksquare$}] Where any part of this thesis has previously
-        been submitted for a degree or any other qualification at this
-        University or any other institution, this has been clearly stated.
     \item[\tiny{$\blacksquare$}] Where I have consulted the published work of
         others, this is always clearly attributed.
     \item[\tiny{$\blacksquare$}] Where I have quoted from the work of others,
