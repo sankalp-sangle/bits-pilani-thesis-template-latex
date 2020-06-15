@@ -4,23 +4,17 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-\lhead{Chapter 5. \emph{Demonstration and Debugging of sample scenarios}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+\lhead{Chapter 5. \emph{Demonstration and debugging of sample scenarios}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Description of Methodology}
-The rest of this chapter is structured as follows: For a potential fault that can occur in the network, we have
-\begin{itemize}
-    \item A section on the description of the fault
-    \item A section on the configuration of switches and hosts for reproducing the fault
-    \item A section on how the proposed fault can be diagnosed using SQL queries
-    \item Results and relevant illustrations
-\end{itemize}
+This chapter is intended to demonstrate how a combination of relational data as well as the created
+visualizations can help a network administrator to the state and understand the fault in the network.
 
-The last section presents a unified scheme for diagnosing faults in networks that has been built on logic that was developed
-in preceding sections. It also proposes further work to be done till the end of the semester.
+We look at the following two problems here: The synchronous incast problem and the asynchronousincast problem.
+
 \section{The Synchronous Incast Problem}
 
 \subsection{Description}
@@ -108,18 +102,32 @@ The resultant values of Fairness Index calculated are given in table \ref{tab:J_
 % Help
 \label{tab:J_Index_Sync}
 \end{table}
-
-Further, to help the network operator visualize the scenario, plots of link utilization and queue depth at 
-trigger switch are plotted, along with packet distribution in the estimated peak, as shown in figures \ref{fig:link_utilization_sync}, \ref{fig:queue_depth_sync}
-and \ref{fig:distribution_sync}
+The operator first looks at the readings of Jain's Index (Fig. \ref{fig:jind_sync} which point him towards the fact that it is a possible
+case of synchronized incast.
+Then he looks at the birds eye view of the network and seens that all flows seem to converge at the trigger switch at the same time (Fig. \ref{fig:genview_sync}).
+Further, to help the network operator visualize the scenario, plots of queue depth at the
+trigger switch are plotted, along with packet distribution in the estimated peak, as shown in figures \ref{fig:queue_depth_sync}
+and \ref{fig:distribution_sync}.
+The operator then looks at the plot of ingress throughput and concludes that all the flows entered the switch
+at roughly the same time, and there is a certain periodicity in their arrival, as shown in Fig. \ref{fig:ing_sync}
+These hints are enough to suggest to him that the problem is of a synchronous incast.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/link_utilization_sync.png}
+		\includegraphics[width=1.0\columnwidth]{Figures/jindex_sync.png}
 		\rule{35em}{0.5pt}
-	\caption[Link Utilization at Trigger Switch, Sync Incast]{Link Utilization at Trigger Switch, Sync Incast}
-	\label{fig:link_utilization_sync}
+	\caption[Debugger Home Page, Synchronous Incast]{J Index calculated and presented to administrator}
+	\label{fig:jind_sync}
 \end{figure}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=1.0\columnwidth]{Figures/distribution_sync.png}
+		\rule{35em}{0.5pt}
+	\caption[Packet Distribution at Trigger Switch, Sync Incast]{Packet Distribution at Trigger Switch, Sync Incast. Note the highly even distribution.}
+	\label{fig:distribution_sync}
+\end{figure}
+
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.0\columnwidth]{Figures/queue_depth_sync.png}
@@ -127,12 +135,21 @@ and \ref{fig:distribution_sync}
 	\caption[Queue Depth at Trigger Switch, Sync Incast]{Queue Depth at Trigger Switch, Sync Incast}
 	\label{fig:queue_depth_sync}
 \end{figure}
+
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/distribution_sync.png}
+		\includegraphics[width=1.0\columnwidth]{Figures/ingress_sync.png}
 		\rule{35em}{0.5pt}
-	\caption[Packet Distribution at Trigger Switch, Sync Incast]{Packet Distribution at Trigger Switch, Sync Incast. Note the highly even distribution.}
-	\label{fig:distribution_sync}
+	\caption[Ingress Throughput for Synchronous Incast]{Ingress throughput for synchronous incast.}
+	\label{fig:ing_sync}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=20cm,height=25cm,keepaspectratio]{Figures/genview_sync.png}
+		\rule{35em}{0.5pt}
+	\caption[Birds eye view, Synchronous Incast]{Birds eye view of network at chronological points in time.}
+	\label{fig:genview_sync}
 \end{figure}
 
 \section{Asynchronous Incast problem and Heavy Hitters}
@@ -174,26 +191,40 @@ The resultant values of Fairness Index calculated are given in table \ref{tab:J_
 	\label{tab:J_Index_Async}
 	\end{table}
 
+	The operator first looks at the readings of Jain's Index (Fig. \ref{fig:jind_async} which point him towards the fact that it is a possible
+	case of asynchronized incast.
+	Then he looks at the birds eye view of the network and seens that there is an interval of time when the links along a path fill up
+	with traffic. (Fig. \ref{fig:genview_async}).
+	Further, to help the network operator visualize the scenario, plots of ingress throughput and compositon of queue depth at 
+	trigger switch are plotted, along with packet distribution in the estimated peak, as shown in figures \ref{fig:ing_throughput_async}, \ref{fig:queue_comp_async}
+	and \ref{fig:distribution_async}
+	Looking at the plot of ingress throughput, the operator sees that there is one heavyhitter flow with a rough throughputof 8 Gbps existing in the network.
+	He also looks at the composition of the queue depth to see that a large number of packets at the peak are of the green flow (the heavy hitter).
 
-Further, to help the network operator visualize the scenario, plots of link utilization and queue depth at 
-trigger switch are plotted, along with packet distribution in the estimated peak, as shown in figures \ref{fig:link_utilization_async}, \ref{fig:queue_depth_async}
-and \ref{fig:distribution_async}
+	These hints suggest a case of asynchronous incast.
 
-
+	\begin{figure}[htbp]
+		\centering
+			\includegraphics[width=1.0\columnwidth]{Figures/jindex_async.png}
+			\rule{35em}{0.5pt}
+		\caption[Debugger Home Page, Asynchronous Incast]{J Index calculated and presented to administrator}
+		\label{fig:jind_async}
+	\end{figure}
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/link_utilization_async.png}
+		\includegraphics[width=1.0\columnwidth]{Figures/ing_thpt_async.png}
 		\rule{35em}{0.5pt}
-	\caption[Link Utilization at Trigger Switch, Async Incast]{Link Utilization at Trigger Switch, Async Incast}
-	\label{fig:link_utilization_async}
+	\caption[Ingress Throughput Asynchronous Incast]{Ingress throughput for asynchronous incast}
+	\label{fig:ing_throughput_async}
 \end{figure}
+
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/queue_depth_async.png}
+		\includegraphics[width=1.0\columnwidth]{Figures/queue_comp_async.png}
 		\rule{35em}{0.5pt}
-	\caption[Queue Depth at Trigger Switch, Async Incast]{Queue Depth at Trigger Switch, Async Incast}
-	\label{fig:queue_depth_async}
+	\caption[Queue Composition at Trigger Switch, Async Incast]{Queue Composition at Trigger Switch, Async Incast}
+	\label{fig:queue_comp_async}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
@@ -203,11 +234,20 @@ and \ref{fig:distribution_async}
 	\label{fig:distribution_async}
 \end{figure}
 
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=20cm,height=25cm,keepaspectratio]{Figures/genview_async.png}
+		\rule{35em}{0.5pt}
+	\caption[Birds eye view, Asynchronous Incast]{Birds eye view of network at chronological points in time.}
+	\label{fig:genview_async}
+\end{figure}
+
 
 \section{Link Underprovisioning}
 \subsection{Description}
 A link underprovision occurs when the link is operating at near, or maximum capacity for prolonged periods of time (of the order of milliseconds or seconds).
 This usually requires the operator to provide additional bandwidth for the link.
+It also leads to large buildup of queues in switches for prolonged periods of time.
 \subsection{Configuration}
 For creating a link underprovision scenario in our topology, we generate traffic of 6 Gbps from H3, H4, H5 and 1 Gbps from H1 and H2. The flow are routed
 according to Figure \ref{fig:Synch Incast Topo} and get aggregated at switch 7.
@@ -237,9 +277,16 @@ The resultant values of peak width calculated are given in table \ref{tab:Peak_W
 \label{tab:Peak_Width}
 \end{table}
 
-Further, to help the network operator visualize the scenario, plots of link utilization and queue depth at 
-trigger switch are plotted, along with packet distribution in the estimated peak, as shown in figures \ref{fig:link_utilization_under}, \ref{fig:queue_depth_under}
-and \ref{fig:distribution_under}
+The operator first looks at the recommendation given by the application as to what the fault is (Fig. \ref{fig:home_under}).
+The operator looks at the birds eye view of the network and seens that there is massive buildup of queues along with maximum
+capacity utilization of links.(Fig. \ref{fig:genview_under}).
+Further, to help the network operator visualize the scenario, plots of ingress throughput and compositon of queue depth at 
+trigger switch are plotted as shown in figures \ref{fig:ing_throughput_under} and \ref{fig:queue_comp_async}.
+Looking at the plot of ingress throughput, the operator sees that there are two heavyhitter flows existing in the network.
+He also looks at the composition of the queue depth to see that a large number of packets at the peak belong to these two flows and
+that the queue only starts to buildup once these flows start entering the switch.
+
+These hints suggest a case of underprovisioned network.
 
 \begin{figure}[htbp]
 	\centering
