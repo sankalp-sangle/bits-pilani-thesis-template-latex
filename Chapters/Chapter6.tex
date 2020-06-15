@@ -7,8 +7,22 @@
 \lhead{Chapter 6. \emph{Conclusion}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 \section{Findings}
-
+The goal of this thesis was to develop a monitoring system for data center networks using
+data plane programmability and debate about the feasibility of a relational model for effectively querying the network. 
+In chapter 4, we have 
+demonstrated that with a relatively simple set of information about packets leaving switches, a number of quantities can be
+derived which are hugely insightful. These quantities were then used in chapter 5 where we saw how a network
+administrator could use the visualizations developed to gain an insight into the network. We established network visibility
+through peak depth fairness calculations, plots of ingress throughputs and egress throughputs, and an ability to replay the
+traffic through the network and see exactly how throughputs across links and queues in switches changed over time.
 \section{Future Scope}
-
+The natural next step in this direction is to investigate whether data plane programmability can be combined with
+learning methods (techniques of deep learning and machine learning), to create autonomous, self driving networks which
+can predict, based on incoming data, as to whether a fault is about to happen in the network and take remedial steps to prevent it.
+In cases where the fault couldn't be predicted beforehand, the system can learn from new data and train itself to identify traffic
+patterns better. Self driving autonomous data center networks can potentially save a lot of capital for technology companies through
+better fault tolerance and fault recovery
+as well as give them the ability to
+provide better quality of service guarantees to customers.
 
 
