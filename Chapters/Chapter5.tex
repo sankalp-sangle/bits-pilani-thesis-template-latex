@@ -281,26 +281,19 @@ The operator first looks at the recommendation given by the application as to wh
 The operator looks at the birds eye view of the network and seens that there is massive buildup of queues along with maximum
 capacity utilization of links.(Fig. \ref{fig:genview_under}).
 Further, to help the network operator visualize the scenario, plots of ingress throughput and compositon of queue depth at 
-trigger switch are plotted as shown in figures \ref{fig:ing_throughput_under} and \ref{fig:queue_comp_async}.
-Looking at the plot of ingress throughput, the operator sees that there are two heavyhitter flows existing in the network.
-He also looks at the composition of the queue depth to see that a large number of packets at the peak belong to these two flows and
-that the queue only starts to buildup once these flows start entering the switch.
+trigger switch are plotted as shown in figure \ref{fig:ing_throughput_under}.
+Looking at the plot of ingress throughput, the operator sees that there is one heavyhitter flow existing in the network.
+He also looks at the composition of the queue depth to see that a large number of packets at the peak belong to this one flow and
+that the queue only starts to buildup once this flow starts entering the switch.
 
 These hints suggest a case of underprovisioned network.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/link_utilization_under.png}
+		\includegraphics[width=1.0\columnwidth]{Figures/jindex_under.png}
 		\rule{35em}{0.5pt}
-	\caption[Link Utilization at Trigger Switch, Link Underprovisioning]{Link Utilization at Trigger Switch, Link Underprovisioning}
-	\label{fig:link_utilization_under}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=1.0\columnwidth]{Figures/queue_depth_under.png}
-		\rule{35em}{0.5pt}
-	\caption[Queue Depth at Trigger Switch, Link Underprovisioning]{Queue Depth at Trigger Switch, Link Underprovisioning}
-	\label{fig:queue_depth_under}
+	\caption[Debugger Home Page, Link Underprovisioning]{Message given to administrator}
+	\label{fig:home_under}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
@@ -309,7 +302,24 @@ These hints suggest a case of underprovisioned network.
 	\caption[Packet Distribution at Trigger Switch, Link Underprovisioning]{Packet Distribution at Trigger Switch, Link Underprovisioning. Note the overlapping dots, showing link to be overutilized.}
 	\label{fig:distribution_under}
 \end{figure}
-\section{Conclusions and further scope}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=1.0\columnwidth]{Figures/ingress_throughput_queue_comp_under.png}
+		\rule{35em}{0.5pt}
+	\caption[Ingress Throughput, Queue Composition at Trigger Switch, Link Underprovisioning]{Ingress Throughput, Queue Composition at Trigger Switch, Link Underprovisioning}
+	\label{fig:ing_throughput_under}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=20cm,height=25cm,keepaspectratio]{Figures/genview_under.png}
+		\rule{35em}{0.5pt}
+	\caption[Birds eye view, Link Underprovisioning]{Birds eye view of network at chronological points in time.}
+	\label{fig:genview_under}
+\end{figure}
+
+\section{A unified scheme and further scope}
 
 Based on the reasoning done in the preceding sections, a unified scheme to classify arbitrary scenarios based on the above discussion would be as follows:
 \begin{itemize}
@@ -320,7 +330,11 @@ Based on the reasoning done in the preceding sections, a unified scheme to class
 	\item Else (it is between 0.45 and 0.7), plot appropriate graphs for queue depth and link utilization and let the network operator deduce the exact problem.
 \end{itemize}
 
-As I further pursue my thesis, my goal is to isolate many such problems (two problems I currently have in mind are link failure 
-and change of control plane policy), diagnose them on an individual basis, and at the end consolidate everything together into a single unified logic for diagnosing 
-varied faults in a network.
+In this way, we can isolate many such problems (for example,link failure 
+and change of control plane policy), diagnose them on an individual basis using the relational model,
+and at the end consolidate everything together into a single unified logic for diagnosing varied faults in a network.
+
+Thus, this chapter and the previous chaper prove that the relational model is an effective means for debugging
+the network and identifying issues. This, coupled with effective tools and visualizations built in this thesis
+demonstratethat large insights can be gained into network functioning.
 
